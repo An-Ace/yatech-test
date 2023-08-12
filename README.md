@@ -26,6 +26,20 @@ Mode Production
   npm start
 ```
 
+## Environment Variables
+
+Untuk penjalanan App ini, Anda perlu menambahkan environment variables berikut ke file .env Anda
+
+`DATABASE_URL="file:./db.sqlite"`
+
+`ACCESS_SECRET="H4ll0-1-4M-H3R3-M-N45RULL0H-7777"`
+
+`REFRESH_SECRET="7H!5-MY-53CR37-H45H-:9000000000"`
+
+`ACCESS_EXP="12h"`
+
+`REFRESH_EXP="7d"`
+
 ## Halaman Utama
 ```http
   http://localhost:3333
@@ -152,20 +166,6 @@ function solution(a: number[], m: any, k: any) {
 ```javascript
   router.get("/profiles", [checkSession, reqAdmin, getProfiles]))
 ```
-
-## Environment Variables
-
-Untuk penjalanan App ini, Anda perlu menambahkan environment variables berikut ke file .env Anda
-
-`DATABASE_URL="file:./db.sqlite"`
-
-`ACCESS_SECRET="H4ll0-1-4M-H3R3-M-N45RULL0H-7777"`
-
-`REFRESH_SECRET="7H!5-MY-53CR37-H45H-:9000000000"`
-
-`ACCESS_EXP="12h"`
-
-`REFRESH_EXP="7d"`
 
 ## Tech Stack
 
