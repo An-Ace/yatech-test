@@ -155,7 +155,7 @@ function solution(a: number[], m: any, k: any) {
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+Untuk penjalanan App ini, Anda perlu menambahkan environment variables berikut ke file .env Anda
 
 `DATABASE_URL="file:./db.sqlite"`
 
