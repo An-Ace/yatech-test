@@ -28,14 +28,15 @@ Mode Production
 
 ## Halaman Utama
 ```http
-  GET http:localhost:3333
+  http://localhost:3333
 ```
 ## Soal No 1
 
 #### Pencarian Jumlah Penjumlahan Array Sesuai Rumus
 
+-#Halaman Logic#-
 ```http
-  GET http:localhost:3333/logic -#Halaman Logic#-
+  http://localhost:3333/logic
 ```
 
 | Langkah | Field     | Deskripsi                |
@@ -109,8 +110,9 @@ function solution(a: number[], m: any, k: any) {
 
 #### Autentikasi: Access Token dan Refresh Token
 
+-#Halaman Auth#-
 ```http
-  GET http:localhost:3333/auth -#Halaman Auth#-
+  http://localhost:3333/auth 
 ```
 
 ### Fitur
@@ -140,7 +142,7 @@ function solution(a: number[], m: any, k: any) {
 #### Untuk Api dibungkus dengan path **/api**
 ```javascript
   app.use("/api", router)
-  // Contoh: http://localhost:3333/api/user
+  // Contoh: http:////localhost:3333/api/user
 ```
 #### Pada Routing API, untuk halaman yang memerlukan Login akan routing akan dibungkus array Middleware dengan menaruh **isi access token** pada **req.session** sebagai **Data dari Access Token**, 
 ```javascript
