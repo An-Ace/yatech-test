@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autentikasi</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4" id="page-title">Login | Register</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="/logic" class="nav-link ">Soal 1</a></li>
+          <li class="nav-item"><a href="/auth" class="nav-link active" aria-current="page">Soal 2</a></li>
+        </ul>
+      </header>
+      <div class="conteiner">
+        <div id="auth">
+          <!-- Pills navs -->
+          <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+                aria-controls="pills-login" aria-selected="true">Login</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+                aria-controls="pills-register" aria-selected="false">Register</a>
+            </li>
+          </ul>
+          <!-- Pills navs -->
+
+          <!-- Pills content -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+              <form method="post">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="loginName" class="form-control"  value="admin" required/>
+                  <label class="form-label" for="loginName">Email or username</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="loginPassword" class="form-control" value="test123" required/>
+                  <label class="form-label" for="loginPassword">Password</label>
+                </div>
+
+                <!-- 2 column grid layout -->
+                <div class="row mb-2">
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-block mb-4" onclick="changeForm('admin', 'test123');return false;">Admin data</button>
+                  </div>
+
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <button type="button" class="btn btn-warning btn-block mb-4" onclick="changeForm('user', 'test123');return false;">User data</button>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4" onclick="login();return false;">Sign in</button>
+
+              </form>
+            </div>
+            <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+              <form>
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="registerFullName" class="form-control" required/>
+                  <label class="form-label" for="registerFullName">Full Name</label>
+                </div>
+
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="registerUsername" class="form-control" required/>
+                  <label class="form-label" for="registerUsername">Username</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="registerEmail" class="form-control" required/>
+                  <label class="form-label" for="registerEmail">Email</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="registerPassword" class="form-control" required/>
+                  <label class="form-label" for="registerPassword">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="registerBio" class="form-control" required/>
+                  <label class="form-label" for="registerBio">Bio</label>
+                </div>
+
+                <!-- Checkbox -->
+                <!-- <div class="form-check d-flex justify-content-center mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                    aria-describedby="registerCheckHelpText" />
+                  <label class="form-check-label" for="registerCheck">
+                    I have read and agree to the terms
+                  </label>
+                </div> -->
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-3" onclick="register();return false;">Sign up</button>
+              </form>
+            </div>
+          </div>
+          <!-- Pills content -->
+        </div>
+        <div id="auth-done" style="display: none;">
+          <button class="btn btn-warning btn-block mb-4 fs-1" style="height: 5rem;" onclick="logout()">
+            Logout
+          </button>
+          <div class="card m-4 border border-info">
+            <div class="card-body">
+              <code id="token">[response]</code>
+            </div>
+          </div>
+          
+        </div>
+        <div>
+          <button class="btn btn-danger" onclick="brokeCookie('access-token', 1)" id="broke-access">Rusak Akses Token</button>
+          <a href="/api/user" target="_blank" class="me-2">
+            <button class="btn btn-primary">Need Login: Lihat User</button>
+          </a>
+          <a href="/api/profile" target="_blank" class="me-2">
+            <button class="btn btn-primary">Need Login:Lihat Profile</button>
+          </a>
+          <a href="/api/users" target="_blank" class="me-2">
+            <button class="btn btn-success">Need Admin: Lihat Semua User</button>
+          </a>
+          <a href="/api/profiles" target="_blank" class="me-2">
+            <button class="btn btn-success">Need Admin: Lihat Semua Profile</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
+    ></script>
+    <script>
+      function changeForm(username, password) {
+        document.querySelector('#loginName').value = username
+        document.querySelector('#loginPassword').value = password
+      }
+      function brokeCookie(name,days) {
+        const value = JSON.stringify({...JSON.parse(document.querySelector("#token").textContent), accessToken: "akses token rusak"})
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        document.querySelector('#token').innerHTML = value
+      }
+      function logout () {
+        localStorage.clear()
+        document.cookie = 'access-token=; Max-Age=0;'; 
+        document.querySelector('#auth-done').style.display = "none"
+        document.querySelector('#broke-access').style.display = "none"
+        document.querySelector('#auth').style.display = "unset" 
+        document.querySelector('#page-title').innerHTML = "Login | Register"
+      }
+      function login() {
+        const username = document.getElementById('loginName').value 
+        const password = document.getElementById('loginPassword').value
+        const Login = fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ data: { username, password } }),
+        })
+        .then(async (response) => {
+          const res = await response.json()
+          localStorage.setItem('refresh-token', JSON.stringify(res.data.refreshToken))
+          document.querySelector('#auth-done').style.display = "unset"
+          document.querySelector('#broke-access').style.display = "unset"
+          document.querySelector('#auth').style.display = "none"
+          document.querySelector('#token').innerHTML = JSON.stringify(res.data)
+          document.querySelector('#page-title').innerHTML = `Selamat Datang: ${res.data.user.username}`
+        })
+      }
+      function register() {
+        const data = {
+          username: document.getElementById('registerUsername').value,
+          password: document.getElementById('registerPassword').value,
+          email: document.getElementById('registerEmail').value,
+          profile: {
+            create: {
+              fullName: document.getElementById('registerFullName').value,
+              bio: document.getElementById('registerBio').value
+            }
+          }
+        }
+        const Register = fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ data }),
+        })
+        .then(async (response) => {
+          const res = await response.json()
+          localStorage.setItem('refresh-token', JSON.stringify(res.data.refreshToken))
+          document.querySelector('#auth-done').style.display = "unset"
+          document.querySelector('#broke-access').style.display = "unset"
+          document.querySelector('#auth').style.display = "none"
+          document.querySelector('#token').innerHTML = JSON.stringify(res.data)
+          document.querySelector('#page-title').innerHTML = `Selamat Datang: ${res.data.user.username}`
+        })
+      }
+      window.onload = (e => {
+        const refreshToken = localStorage.getItem('refresh-token')
+        if (refreshToken) {
+          const getToken = fetch('/api/get-token', {
+            method: 'POST',
+            headers: {
+              Accept: 'application.json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: {
+              refreshToken: JSON.parse(refreshToken)
+            }}),
+          })
+          .then(async (response) => {
+            const res = await response.json()
+            localStorage.setItem('refresh-token', JSON.stringify(res.data.refreshToken))
+            document.querySelector('#auth-done').style.display = "unset"
+            document.querySelector('#auth').style.display = "none"
+            document.querySelector('#token').innerHTML = JSON.stringify(res.data)
+            document.querySelector('#page-title').innerHTML = `Selamat Datang: ${res.data.user.username}`
+          })
+        } else {
+          localStorage.removeItem('refresh-token')
+          document.querySelector('#broke-access').style.display = "none"
+        }
+      })
+    </script>
+  </body>
+</html>
