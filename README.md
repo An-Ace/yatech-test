@@ -152,10 +152,24 @@ function solution(a: number[], m: any, k: any) {
 ```javascript
   router.get("/profiles", [checkSession, reqAdmin, getProfiles]))
 ```
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DATABASE_URL="file:./db.sqlite"`
+
+`ACCESS_SECRET="H4ll0-1-4M-H3R3-M-N45RULL0H-7777"`
+
+`REFRESH_SECRET="7H!5-MY-53CR37-H45H-:9000000000"`
+
+`ACCESS_EXP="12h"`
+
+`REFRESH_EXP="7d"`
+
 ## Tech Stack
 
 **Server:** Node, Express.JS, Prisma (ORM), jsonwebtoken, bcrypt
-
 
 # Note
 - ### Screenshoot Percobaan ada pada folder **screenshoot**.
