@@ -1,9 +1,6 @@
 
 # Dokumentasi Yatech Back End Test
 
-
-
-
 ## Penginstalan
 
 To install app
@@ -16,6 +13,17 @@ To install app
 ##### Hapus folder migrations didalam folder prisma, Kemudian:
 ```bash
   prisma run migrate
+```
+
+## Penjalanan
+Mode Devolopment
+```bash
+  npm run dev
+```
+#### atau
+Mode Production
+```bash
+  npm start
 ```
 
 ## Halaman Utama
