@@ -142,7 +142,7 @@ function solution(a: number[], m: any, k: any) {
 #### Untuk Api dibungkus dengan path **/api**
 ```javascript
   app.use("/api", router)
-  // Contoh: http:////localhost:3333/api/user
+  // Contoh: http://localhost:3333/api/user
 ```
 #### Pada Routing API, untuk halaman yang memerlukan Login akan routing akan dibungkus array Middleware dengan menaruh **isi access token** pada **req.session** sebagai **Data dari Access Token**, 
 ```javascript
