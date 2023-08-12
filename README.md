@@ -159,5 +159,5 @@ function solution(a: number[], m: any, k: any) {
 
 # Note
 - ### Screenshoot Percobaan ada pada folder **screenshoot**.
-- ### My Favorite Framework But Not Include: NEXT. JS & Next-Auth, React JS.
+<!-- - ### My Favorite Framework But Not Include: NEXT. JS & Next-Auth, React JS. -->
 - ### Untuk membuat web dengn autentikasi secara cepat saya biasa menggunakan NEXT JS dengan library Next-Auth sebagai session handler.
